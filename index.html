@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f3f7ff">
+  <title>رحلة المستكشف المبدع</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <div class="hero-top">
+    <span class="brand-mark">✦</span>
+    <span>مساحة لعب هادئة وممتعة</span>
+    <button id="soundToggle" class="sound-toggle" aria-pressed="false">🔊 تشغيل أصوات البيئة</button>
+  </div>
+  <h1>رحلة المستكشف المبدع</h1>
+  <p>اكتشف، استمع، تعرّف، ثم اصنع عالمك بالألوان.</p>
+  <div class="progress" aria-label="تقدم اللعبتين"><span id="progressFill"></span></div>
+</header>
+
+<main>
+  <nav class="step-nav" aria-label="مراحل اللعبة">
+    <button class="step active" data-view="explore"><span>01</span> المستكشف الصغير</button>
+    <span class="step-line"></span>
+    <button class="step" data-view="create"><span>02</span> شكّل عالمك</button>
+  </nav>
+
+  <section id="exploreView" class="view active">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">المرحلة الأولى · الاستكشاف</p>
+        <h2>إلى أين نذهب اليوم؟</h2>
+        <p class="muted">اختر المكان الذي تحب استكشافه. يمكنك تشغيل صوت البيئة أو إيقافه في أي وقت.</p>
+      </div>
+      <div class="calm-tag">خذ وقتك، لا يوجد مؤقت 🌿</div>
+    </div>
+
+    <div class="environment-grid" id="environmentGrid">
+      <button class="environment-card sea selected" data-scene="sea">
+        <span class="environment-icon">🌊</span><span class="environment-name">عالم البحر</span>
+        <span class="environment-hint">أمواج ونسيم البحر</span>
+      </button>
+      <button class="environment-card forest" data-scene="forest">
+        <span class="environment-icon">🌳</span><span class="environment-name">عالم الغابة</span>
+        <span class="environment-hint">طيور وأوراق الشجر</span>
+      </button>
+      <button class="environment-card farm" data-scene="farm">
+        <span class="environment-icon">🌾</span><span class="environment-name">عالم المزرعة</span>
+        <span class="environment-hint">أجواء المزرعة الهادئة</span>
+      </button>
+    </div>
+
+    <div class="sound-strip">
+      <div class="sound-symbol" id="soundSymbol">🌊</div>
+      <div class="sound-copy"><strong id="soundTitle">صوت أمواج البحر</strong><span id="soundDescription">استمع إلى أجواء البحر الهادئة.</span></div>
+      <button id="sceneSoundButton" class="pill-button">▶ استمع للأجواء</button>
+    </div>
+
+    <div class="explore-layout">
+      <article class="discovery-card">
+        <div class="card-topline"><span class="eyebrow">اكتشاف اليوم</span><span class="counter" id="animalCounter">1 / 3</span></div>
+        <div class="animal-display" id="animalDisplay"><span class="animal-emoji">🐬</span><span class="sparkle s1">✦</span><span class="sparkle s2">✧</span></div>
+        <h3 id="animalArabic">الدلفين</h3>
+        <p class="english-word" id="animalEnglish">DOLPHIN</p>
+        <div class="discovery-actions">
+          <button class="action-button" id="sayAnimal">🔈 اسمع الاسم</button>
+          <button class="action-button soft" id="animalCall">🐾 صوت الحيوان</button>
+        </div>
+      </article>
+
+      <article class="mission-card">
+        <p class="eyebrow">مهمة بسيطة</p>
+        <h3 id="missionTitle">من يعيش في البحر؟</h3>
+        <p class="muted" id="missionText">اختر الحيوان الذي ينتمي إلى هذه البيئة.</p>
+        <div class="answer-grid" id="answerGrid"></div>
+        <div class="feedback" id="exploreFeedback" aria-live="polite">اختر إجابة عندما تكون مستعدًا.</div>
+        <div class="mission-footer">
+          <button class="text-button" id="readMission">🔊 اقرأ التعليمات</button>
+          <button class="primary-button" id="nextAnimal">اكتشاف آخر ←</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="createView" class="view">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">المرحلة الثانية · الإبداع</p>
+        <h2>ورشة شكّل عالمك</h2>
+        <p class="muted">اختر حيوانًا، ثم استخدم ألوان الصلصال الافتراضي لتزيين رسمته بطريقتك.</p>
+      </div>
+      <div class="calm-tag">كل عمل فني مميز 🎨</div>
+    </div>
+
+    <div class="animal-picker" id="animalPicker">
+      <button class="animal-chip selected" data-animal="dolphin">🐬 <span>دلفين</span></button>
+      <button class="animal-chip" data-animal="fish">🐠 <span>سمكة</span></button>
+      <button class="animal-chip" data-animal="lion">🦁 <span>أسد</span></button>
+      <button class="animal-chip" data-animal="monkey">🐵 <span>قرد</span></button>
+      <button class="animal-chip" data-animal="cow">🐮 <span>بقرة</span></button>
+      <button class="animal-chip" data-animal="butterfly">🦋 <span>فراشة</span></button>
+      <button class="animal-chip" data-animal="turtle">🐢 <span>سلحفاة</span></button>
+      <button class="animal-chip" data-animal="elephant">🐘 <span>فيل</span></button>
+    </div>
+
+    <div class="studio-layout">
+      <aside class="studio-info">
+        <div class="studio-animal" id="studioEmoji">🐬</div>
+        <p class="eyebrow">اسم الحيوان بالإنجليزية</p>
+        <div class="trace-word" id="traceWord">DOLPHIN</div>
+        <button class="action-button" id="sayEnglish">🔊 استمع إلى الاسم</button>
+        <p class="studio-note">يمكنك سماع الاسم أكثر من مرة، ثم تزيين الرسم بالألوان التي تختارها.</p>
+        <div class="tool-tip">💡 اسحب إصبعك أو الماوس داخل مساحة الرسم لوضع ألوان الصلصال.</div>
+      </aside>
+
+      <div class="drawing-area">
+        <div class="drawing-header"><strong>لوحة التشكيل</strong><span>اختر لونًا وابدأ التزيين</span></div>
+        <div class="canvas-frame"><canvas id="drawingCanvas" width="760" height="480" aria-label="لوحة تشكيل وتلوين الحيوان"></canvas></div>
+        <div class="color-row" id="colorRow" aria-label="ألوان الصلصال">
+          <button class="color-dot active" style="--dot:#f28fa6" data-color="#f28fa6" aria-label="وردي"></button>
+          <button class="color-dot" style="--dot:#f5c75e" data-color="#f5c75e" aria-label="أصفر"></button>
+          <button class="color-dot" style="--dot:#80c9a6" data-color="#80c9a6" aria-label="أخضر"></button>
+          <button class="color-dot" style="--dot:#83b8ec" data-color="#83b8ec" aria-label="أزرق"></button>
+          <button class="color-dot" style="--dot:#b39be8" data-color="#b39be8" aria-label="بنفسجي"></button>
+          <button class="color-dot" style="--dot:#f3a56d" data-color="#f3a56d" aria-label="برتقالي"></button>
+          <button class="color-dot" style="--dot:#9a806e" data-color="#9a806e" aria-label="بني"></button>
+          <button class="color-dot" style="--dot:#303c52" data-color="#303c52" aria-label="كحلي"></button>
+        </div>
+        <div class="drawing-tools">
+          <button class="tool-button" id="eraser">🧽 ممحاة</button>
+          <button class="tool-button" id="undo">↶ تراجع</button>
+          <button class="tool-button" id="clearCanvas">مسح اللوحة</button>
+          <button class="primary-button" id="finishArt">أنهيت لوحتي ✨</button>
+        </div>
+        <p class="feedback" id="artFeedback" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>صُممت التجربة لتكون مرنة وهادئة، ويمكن تعديلها حسب احتياجات الطفل واهتماماته.</footer>
+<script src="script.js"></script>
+</body>
+</html>
